@@ -5,7 +5,7 @@
 # - Current directory name
 # - Git branch and dirty state (if inside a git repo)
 
-set -g theme_prompt_char_normal '⟩ '
+set -g theme_prompt_char_normal '❯ '
 set -g theme_prompt_virtual_env_char_begin '['
 set -g theme_prompt_virtual_env_char_end ']'
 set -g theme_prompt_git_char_begin '('
