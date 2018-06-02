@@ -2,7 +2,7 @@
 
 A minimalist [fish shell](http://fishshell.com/) theme for people who use git. Forked from [cseelus/clearance-fish](https://github.com/cseelus/clearance-fish).
 
-![clearance2 theme](https://raw.github.com/cseelus/clearance-fish/master/preview.png)
+![clearance2 theme](https://raw.github.com/james2doyle/theme-clearance2/master/preview.png)
 
 ## Config
 
