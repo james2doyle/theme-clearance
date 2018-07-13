@@ -18,4 +18,4 @@ This is the default setup:
 * `set -g theme_prompt_git_is_dirty '±'`
 * `set -g theme_prompt_divider ' · '`
 * `set -g theme_prompt_newline yes`
-* `set -g theme_prompt_full_path yes`
+* `set -g theme_prompt_full_path yes` (prefixed with `.../`)

@@ -45,7 +45,7 @@ function fish_prompt
 
   set -l visual_path $blue$pretty_path
   if test $theme_prompt_full_path = no
-    set visual_path $blue(basename $pretty_path)
+    set visual_path $blue(basename $pretty_path | sed "s:^:.../:")
   end
 
   # Print pwd or full path
