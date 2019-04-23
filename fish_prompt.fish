@@ -15,8 +15,8 @@ set -g theme_prompt_divider ' · '
 set -g theme_prompt_newline yes
 set -g theme_prompt_full_path yes
 set -g theme_prompt_ahead_behind_status yes
-set -g theme_prompt_git_ahead_glyph      \u2191 # '↑'
-set -g theme_prompt_git_behind_glyph     \u2193 # '↓'
+set -g theme_prompt_git_ahead_glyph \u2191 # '↑'
+set -g theme_prompt_git_behind_glyph \u2193 # '↓'
 
 function _git_branch_name
   echo (command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')

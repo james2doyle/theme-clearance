@@ -19,3 +19,6 @@ This is the default setup:
 * `set -g theme_prompt_divider ' · '`
 * `set -g theme_prompt_newline yes`
 * `set -g theme_prompt_full_path yes` (prefixed with `.../`)
+* `set -g theme_prompt_ahead_behind_status yes`
+* `set -g theme_prompt_git_ahead_glyph \u2191 # '↑'`
+* `set -g theme_prompt_git_behind_glyph \u2193 # '↓'`
