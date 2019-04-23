@@ -42,7 +42,7 @@ function __git_ahead_verbose -S -d 'Print a more verbose ahead/behind state for 
     case '0 *' # behind upstream
       echo " $theme_prompt_git_behind_glyph $behind"
     case '*' # diverged from upstream
-      echo " $theme_prompt_git_ahead_glyph $ahead$theme_prompt_git_behind_glyph $behind"
+      echo " $theme_prompt_git_ahead_glyph $ahead $theme_prompt_git_behind_glyph $behind"
   end
 end
 
