@@ -14,9 +14,9 @@ set -g theme_prompt_git_is_dirty '±'
 set -g theme_prompt_divider ' · '
 set -g theme_prompt_newline yes
 set -g theme_prompt_full_path yes
-
-set -x theme_prompt_git_ahead_glyph      \u2191 # '↑'
-set -x theme_prompt_git_behind_glyph     \u2193 # '↓'
+set -g theme_prompt_ahead_behind_status yes
+set -g theme_prompt_git_ahead_glyph      \u2191 # '↑'
+set -g theme_prompt_git_behind_glyph     \u2193 # '↓'
 
 function _git_branch_name
   echo (command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')
@@ -27,7 +27,7 @@ function _git_is_dirty
 end
 
 function __git_ahead_verbose -S -d 'Print a more verbose ahead/behind state for the current branch'
-  set -l commits (command git rev-list --left-right '@{upstream}...HEAD' 2>/dev/null)
+  set -l commits (command git rev-list --left-right '@{upstream}...HEAD' 2> /dev/null)
   or return
 
   set -l behind (count (for arg in $commits; echo $arg; end | command grep '^<'))
@@ -38,11 +38,11 @@ function __git_ahead_verbose -S -d 'Print a more verbose ahead/behind state for 
     case '0 0' # equal to upstream
       return
     case '* 0' # ahead of upstream
-      echo "$theme_prompt_git_ahead_glyph$ahead"
+      echo " $theme_prompt_git_ahead_glyph $ahead"
     case '0 *' # behind upstream
-      echo "$theme_prompt_git_behind_glyph$behind"
+      echo " $theme_prompt_git_behind_glyph $behind"
     case '*' # diverged from upstream
-      echo "$theme_prompt_git_ahead_glyph$ahead$theme_prompt_git_behind_glyph$behind"
+      echo " $theme_prompt_git_ahead_glyph $ahead$theme_prompt_git_behind_glyph $behind"
   end
 end
 
@@ -53,6 +53,7 @@ function fish_prompt
   set -l blue (set_color blue)
   set -l green (set_color green)
   set -l normal (set_color normal)
+  set -l black (set_color black)
 
   # Output the prompt, left to right
 
@@ -83,8 +84,12 @@ function fish_prompt
     else
       set git_info $theme_prompt_git_char_begin $green $git_branch $normal $theme_prompt_git_char_end
     end
-    # echo -n -s $theme_prompt_divider $git_info $normal
-    echo -n -s $theme_prompt_divider $git_info $normal (__git_ahead_verbose)
+
+    if test $theme_prompt_ahead_behind_status = yes
+      echo -n -s $theme_prompt_divider $git_info $normal $black(__git_ahead_verbose)
+    else
+      echo -n -s $theme_prompt_divider $git_info $normal
+    end
   end
 
   set -l last_status $status
