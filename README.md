@@ -4,6 +4,13 @@ A minimalist [fish shell](http://fishshell.com/) theme for people who use git. F
 
 ![clearance2 theme](https://raw.github.com/james2doyle/theme-clearance2/master/preview.png)
 
+## Install
+
+```
+git clone git@github.com:james2doyle/theme-clearance2.git $HOME/.local/share/omf/themes/clearance2
+omf theme clearance2
+```
+
 ## Config
 
 My main difference in this theme is that you can tweak the config.
